@@ -32,6 +32,8 @@ The winner is chosen based on the following rules:
         IF 
 
 */  
+let playerPoint = 0;
+let computerPoint = 0;
 function computerPlay(){
     const randomNumber = Math.floor(Math.random()*3);
     if(randomNumber === 0){
@@ -52,8 +54,10 @@ function compareGuess(computer, user){
     switch(computer){
         case 'rock' :
             if(user == 'paper'){
+                playerPoint ++;
                 return 'You win ! Paper wraps up rock';
             }else if(user == 'scissor'){
+                computerPoint++;
                 return 'You lose ! rock breaks scissor'
             }else{
                 return 'No winner ! You chose the same things'
@@ -63,17 +67,21 @@ function compareGuess(computer, user){
             if(user == 'paper'){
                 return 'No winner ! You chose the same things';
             }else if(user == 'scissor'){
+                playerPoint ++;
                 return 'You win ! scissor cuts paper';
             }else{
+                computerPoint++;
                 return 'you lose ! Paper wraps up rock';
             }
             break;
         case 'scissor':
             if(user == 'paper'){
+                computerPoint++;
                 return 'You lose ! scissor cuts paper';
             }else if(user == 'scissor'){
                 return 'No winner ! You chose the same things';
             }else{
+                playerPoint ++;
                 return 'You win ! rock breaks scissor';
             }
             break;
@@ -85,4 +93,13 @@ function startGame(playerSelection, computerSelection, compare){
     let result = compare(computerGuess, userGuess);
     return result;
 }
-console.log(startGame(playerPlay, computerPlay, compareGuess));
+for(i=0; i<5; i++){
+    console.log(startGame(playerPlay, computerPlay, compareGuess));
+}
+if(playerPoint < computerPoint){
+    console.log(`Results : Computer ${computerPoint} | player ${playerPoint}. Decison: The computer wins!`);
+}else if(playerPoint > computerPoint){
+    console.log(`Results : Computer ${computerPoint} | player ${playerPoint}. Decison: The player wins!`)
+}else{
+    console.log(`Results : Computer ${computerPoint} | player ${playerPoint}. Decison: No winner. Sorry charlie`)
+}
