@@ -88,19 +88,22 @@ function compareGuess(computer, user){
             break;
     }
 }
-function startGame(playerSelection, computerSelection, compare){
+function playRound(playerSelection, computerSelection, compare){
     let userGuess = playerSelection();
     let computerGuess = computerSelection();
     let result = compare(computerGuess, userGuess);
     return result;
 }
-for(i=0; i<5; i++){
-    console.log(startGame(playerPlay, computerPlay, compareGuess));
+function game(){
+    for(i=0; i<5; i++){
+        console.log(playRound(playerPlay, computerPlay, compareGuess));
+    }
+    if(playerPoint < computerPoint){
+        console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: The computer wins!`);
+    }else if(playerPoint > computerPoint){
+        console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: ${userName} wins!`)
+    }else{
+        console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: No winner. Sorry charlie`)
+    }
 }
-if(playerPoint < computerPoint){
-    console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: The computer wins!`);
-}else if(playerPoint > computerPoint){
-    console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: ${userName} wins!`)
-}else{
-    console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: No winner. Sorry charlie`)
-}
+game();
