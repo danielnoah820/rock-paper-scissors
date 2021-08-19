@@ -34,6 +34,7 @@ The winner is chosen based on the following rules:
 */  
 let playerPoint = 0;
 let computerPoint = 0;
+const userName = prompt("what is your name ?");
 function computerPlay(){
     const randomNumber = Math.floor(Math.random()*3);
     if(randomNumber === 0){
@@ -97,9 +98,9 @@ for(i=0; i<5; i++){
     console.log(startGame(playerPlay, computerPlay, compareGuess));
 }
 if(playerPoint < computerPoint){
-    console.log(`Results : Computer ${computerPoint} | player ${playerPoint}. Decison: The computer wins!`);
+    console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: The computer wins!`);
 }else if(playerPoint > computerPoint){
-    console.log(`Results : Computer ${computerPoint} | player ${playerPoint}. Decison: The player wins!`)
+    console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: ${userName} wins!`)
 }else{
-    console.log(`Results : Computer ${computerPoint} | player ${playerPoint}. Decison: No winner. Sorry charlie`)
+    console.log(`Results : Computer ${computerPoint} | ${userName} ${playerPoint}. Decison: No winner. Sorry charlie`)
 }
